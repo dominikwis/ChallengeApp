@@ -1,31 +1,19 @@
-﻿var name = "Ewa";
-bool woman = true;
-var age = 32;
+﻿int number = 20230707;
+char[] numberAsChar = number.ToString().ToCharArray();
+char[] amount = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+int[] results = new int[10];
 
-if (age < 30 && age >= 18 && woman)
+foreach (char item in numberAsChar)
 {
-    Console.WriteLine("Kobieta poniżej 30 lat");
+        for (int i = 0; i < 10; i++)
+        {
+            if (amount[i] == item)
+            {
+                results[i] += 1;
+            }
+        }
 }
-else if (age == 33 && name == "Ewa" && woman)
+for (int a = 0; a < 10; a++)
 {
-    Console.WriteLine(name + ", lat " + age);
-}
-else if (age < 18)
-{
-    if (!woman)
-    {
-        Console.WriteLine("Niepełnoletni Mężczyzna");
-    }
-    else
-    {
-        Console.WriteLine("Niepełnoletnia Dziewczyna");
-    }
-}
-else
-{
-    Console.WriteLine("Kobieta powyżej 30-stki");
-    if (!woman)
-    {
-        Console.WriteLine("Mężczyzna powyżej 30-stki");
-    }
+    Console.WriteLine(amount[a] + " => " + results[a]);
 }
