@@ -1,19 +1,12 @@
-﻿int number = 20230707;
-char[] numberAsChar = number.ToString().ToCharArray();
-char[] amount = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-int[] results = new int[10];
+﻿using ChallengeApp;
 
-foreach (char item in numberAsChar)
-{
-        for (int i = 0; i < 10; i++)
-        {
-            if (amount[i] == item)
-            {
-                results[i] += 1;
-            }
-        }
-}
-for (int a = 0; a < 10; a++)
-{
-    Console.WriteLine(amount[a] + " => " + results[a]);
-}
+User user1 = new User("Dominik", "qweasdzxc");
+User user2 = new User("Natalia", "tyughjvbn");
+User user3 = new User("Rafał", "123qwe");
+User user4 = new User("Monika", "qpalzm");
+
+user1.AddScore(5);
+user1.AddScore(2);
+var result = user1.Result;
+Console.WriteLine(result);
+var name = User.GameName;
