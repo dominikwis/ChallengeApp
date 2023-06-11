@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
     public class Employee
     {
@@ -29,14 +27,15 @@ namespace ChallengeApp
         {
             foreach (int score in scores)
             {
-                if (this.Scores.Count() <= 4)
-                {
-                    this.Scores.Add(score);
-                }
-                else
-                {
-                    break;
-                }
+                this.Scores.Add(score);
+            }
+        }
+
+        public void addNegativeScore(int[] negativeScores)
+        {
+            foreach (int negativeScore in negativeScores)
+            {
+                this.Scores.Add(negativeScore);
             }
         }
     }
