@@ -1,33 +1,17 @@
 ﻿using ChallengeApp;
 
-Employee employee1 = new Employee("Dominik", "Wiśniewski", 28);
-Employee employee2 = new Employee("Natalia", "Dziurka", 26);
-Employee employee3 = new Employee("Dawid", "Goliwąs", 30);
+User user1 = new User("Dominik", "32423fddf");
+User user2 = new User("Natalia", "32423fddf");
+User user3 = new User("Dawid", "32423fddf");
 
-employee1.addScore(new int[] { 1, 5, 6, 8, 6 });
-employee2.addScore(new int[] { 8, 2, 1, 1, 10 });
-employee3.addScore(new int[] { 4, 4, 3, 5, 7 });
+user1.AddScore(5);
+user1.AddScore(2);
+user1.AddScore(1);
 
-List<Employee> employees = new List<Employee>() { employee1, employee2, employee3 };
+user2.AddScore(2);
+user2.AddScore(5);
+user2.AddScore(9);
 
-int[] sumsOfScores = new int[3];
-int sums = 0;
-
-foreach (var employee in employees)
-{
-    sumsOfScores[sums] = employee.Result;
-    sums++;
-}
-
-int maxResult = sumsOfScores.Max();
-Employee employeeWithMaxResult = null;
-
-foreach (var emp in employees)
-{
-    if (emp.Result == maxResult)
-    {
-        employeeWithMaxResult = emp;
-    }
-}
-
-Console.WriteLine("Spośród wszystkich pracowników, wygrywa: " + employeeWithMaxResult.Name + " " + employeeWithMaxResult.Surname + " lat " + employeeWithMaxResult.Age + " z wynikiem: " + employeeWithMaxResult.Result + " pkt.");
+user3.AddScore(11);
+user3.AddScore(1);
+user3.AddScore(1);
