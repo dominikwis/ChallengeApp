@@ -1,17 +1,14 @@
 ﻿using ChallengeApp;
 
-User user1 = new User("Dominik", "32423fddf");
-User user2 = new User("Natalia", "32423fddf");
-User user3 = new User("Dawid", "32423fddf");
+var employee = new Employee("Dominik", "Wiśniewski");
+employee.AddGrade(2);
+employee.AddGrade(2);
+employee.AddGrade(6);
+var statistics = employee.GetStatiscics();
+Console.WriteLine($"Average: {statistics.Average:N2}");
+Console.WriteLine($"Max: {statistics.Max}");
+Console.WriteLine($"Min: {statistics.Min}");
 
-user1.AddScore(5);
-user1.AddScore(2);
-user1.AddScore(1);
-
-user2.AddScore(2);
-user2.AddScore(5);
-user2.AddScore(9);
-
-user3.AddScore(11);
-user3.AddScore(1);
-user3.AddScore(1);
+// Zadanie domowe Możliwość dodawania ocen i wyświetlania raportu narazie dla jednego pracownika. Napisac kilka testów które to pozwolą sprawdzić
+// czy metoda zwracająca statystyki działa prawidłowo. Na pewno jest przypadek, gdzie testy wykryją nie prawidłowe działanie
+// w kolejnym dniu Adam pokaże jak on to zrobił 
