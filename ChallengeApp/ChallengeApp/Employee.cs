@@ -1,4 +1,6 @@
-﻿namespace ChallengeApp
+﻿using System.Globalization;
+
+namespace ChallengeApp
 {
     public class Employee
     {
@@ -15,8 +17,54 @@
         public string Surname { get; private set; }
 
         public void AddGrade(float grade)
+
         {
-            grades.Add(grade);
+            if (grade >= 0 && grade <= 100)
+            {
+                grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine("Invalid grade value");
+            }
+        }
+
+        public void AddGrade(string grade)
+        {
+            if (float.TryParse(grade, out float resultFloat))
+            {
+                this.AddGrade(resultFloat);
+            }
+            // w poniższym else if skorzystałem z metod, które podpowiedział mi AI, ponieważ, nie wiem czemu, 
+            // wyrażenie nie chciało wejść do tego ifa. AI twierdził, że to może być poprzez błąd interpretacji
+            // kropki w ciągu podanym w program.cs mianowicie: "1.123456789" i dlatego podesłał mi poniższe rozwiązanie
+            // które zadziałało dlatego zostawiłem.
+            else if (double.TryParse(grade, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out double resultDouble))
+            {
+                this.AddGrade(resultDouble);
+            }
+            else
+            {
+                Console.WriteLine("String is not any of the correct data types");
+            }
+        }
+
+        public void AddGrade(double grade)
+        {
+            float result = (float)Math.Round(grade, 2);
+            this.AddGrade(result);
+        }
+
+        public void AddGrade(long grade)
+        {
+            float result = (float)grade;
+            this.AddGrade(result);
+        }
+
+        public void AddGrade(char grade)
+        {
+            string result = grade.ToString();
+            this.AddGrade(result);
         }
 
         public Statiscics GetStatiscics()
