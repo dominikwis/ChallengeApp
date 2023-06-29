@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Net.NetworkInformation;
 
 namespace ChallengeApp
 {
@@ -35,10 +36,6 @@ namespace ChallengeApp
             {
                 this.AddGrade(resultFloat);
             }
-            // w poniższym else if skorzystałem z metod, które podpowiedział mi AI, ponieważ, nie wiem czemu, 
-            // wyrażenie nie chciało wejść do tego ifa. AI twierdził, że to może być poprzez błąd interpretacji
-            // kropki w ciągu podanym w program.cs mianowicie: "1.123456789" i dlatego podesłał mi poniższe rozwiązanie
-            // które zadziałało dlatego zostawiłem.
             else if (double.TryParse(grade, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out double resultDouble))
             {
                 this.AddGrade(resultDouble);
@@ -67,6 +64,7 @@ namespace ChallengeApp
             this.AddGrade(result);
         }
 
+        //GetStatiscics jest z pętlą foreach, więc nie tworzyłem nowej metody GetStatisticsWithForeach();
         public Statiscics GetStatiscics()
         {
             var statistics = new Statiscics();
@@ -86,5 +84,71 @@ namespace ChallengeApp
 
             return statistics;
         }
+
+        public Statiscics GetStatisticsWithfor()
+        {
+            var statistics = new Statiscics();
+
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            for (int i = 0; i < this.grades.Count; i++)
+            {
+                statistics.Max = Math.Max(statistics.Max, grades[i]);
+                statistics.Min = Math.Min(statistics.Min, grades[i]);
+                statistics.Average += this.grades[i];
+            }
+
+            statistics.Average /= this.grades.Count;
+
+            return statistics;
+        }
+
+        public Statiscics GetStatisticsWithWhile()
+        {
+            var statistics = new Statiscics();
+
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            int i = 0;
+            while (i < this.grades.Count)
+            {
+                statistics.Max = Math.Max(statistics.Max, this.grades[i]);
+                statistics.Min = Math.Min(statistics.Min, this.grades[i]);
+                statistics.Average += this.grades[i];
+                i++;
+            }
+
+            statistics.Average /= this.grades.Count;
+
+            return statistics;
+        }
+
+        public Statiscics GetStatisticsWithDoWhile()
+        {
+            var statistics = new Statiscics();
+
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            int i = 0;
+            do
+            {
+                statistics.Max = Math.Max(statistics.Max, this.grades[i]);
+                statistics.Min = Math.Min(statistics.Min, this.grades[i]);
+                statistics.Average += this.grades[i];
+                i++;
+
+            } while (i < this.grades.Count);
+
+            statistics.Average /= this.grades.Count;
+
+            return statistics;
+        }
     }
 }
+
