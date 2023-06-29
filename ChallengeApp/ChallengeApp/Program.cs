@@ -9,6 +9,7 @@ var employee = new Employee("Dominik", "Wiśniewski");
 //employee.AddGrade('a');
 employee.AddGrade(2);
 employee.AddGrade(6);
+
 var statistics = employee.GetStatiscics();
 var statistics2 = employee.GetStatisticsWithfor();
 var statistics3 = employee.GetStatisticsWithWhile();

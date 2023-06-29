@@ -136,6 +136,7 @@ namespace ChallengeApp
             statistics.Min = float.MaxValue;
 
             int i = 0;
+
             do
             {
                 statistics.Max = Math.Max(statistics.Max, this.grades[i]);
