@@ -25,7 +25,7 @@ namespace ChallengeApp
             }
             else
             {
-                Console.WriteLine("Invalid grade value");
+                throw new Exception("Invalid grade value");
             }
         }
 
@@ -41,7 +41,7 @@ namespace ChallengeApp
             }
             else
             {
-                Console.WriteLine("String is not any of the correct data types");
+                throw new Exception("String is not any of the correct data types");
             }
         }
 
@@ -87,8 +87,7 @@ namespace ChallengeApp
                     this.AddGrade(20);
                     break;
                 default:
-                    Console.WriteLine("Wrong letter");
-                    break;
+                    throw new Exception("Wrong letter");
             }
         }
 
