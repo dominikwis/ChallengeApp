@@ -1,21 +1,10 @@
 ﻿using ChallengeApp;
 
-var employee = new Employee("Dominik", "Wiśniewski");
-employee.AddGrade(9f);
-employee.AddGrade(2);
-employee.AddGrade(60);
-
-//try
-//{
-//    Employee emp = null;
-//    var name = emp.Surname;
-//}
-//catch (Exception exception)
-//{
-//    Console.WriteLine(exception.Message);
-//}
-
-employee.AddGrade('A');
+var supervisor = new Supervisor("Dominik", "Wiśniewski");
+//supervisor.AddGrade(9f);
+//supervisor.AddGrade(2);
+//supervisor.AddGrade(60);
+//supervisor.AddGrade('A');
 
 Console.WriteLine("Witamy w programie Xyz do oceny pracowników");
 Console.WriteLine("============================================\n");
@@ -37,7 +26,7 @@ while (true)
 
             try
             {
-                employee.AddGrade(character);
+                supervisor.AddGrade(character);
             }
             catch (Exception e)
             {
@@ -48,7 +37,7 @@ while (true)
         {
             try
             {
-                employee.AddGrade(input);
+                supervisor.AddGrade(input);
             }
             catch (Exception e)
             {
@@ -60,7 +49,7 @@ while (true)
     {
         try
         {
-            employee.AddGrade(input);
+            supervisor.AddGrade(input);
         }
         catch (Exception e)
         {
@@ -69,7 +58,7 @@ while (true)
     }
 }
 
-var statistics = employee.GetStatiscics();
+var statistics = supervisor.GetStatiscics();
 
 Console.WriteLine($"Min.: {statistics.Min}");
 Console.WriteLine($"Max.: {statistics.Max}");
