@@ -3,19 +3,27 @@ using System.Net.NetworkInformation;
 
 namespace ChallengeApp
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname)
+        public Employee(string name)
+            : this(name, "no surname", 'M')
         {
-            this.Name = name;
-            this.Surname = surname;
+
         }
 
-        public string Name { get; private set; }
+        public Employee(string name, string surname)
+            : this (name, surname, 'M')
+        {
+            
+        }
 
-        public string Surname { get; private set; }
+        public Employee(string name, string surname, char sex)
+            : base(name, surname, sex)
+        {
+
+        }
 
         public void AddGrade(float grade)
         {
