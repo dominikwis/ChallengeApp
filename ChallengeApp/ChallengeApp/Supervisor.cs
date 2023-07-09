@@ -7,22 +7,6 @@
         {
         }
 
-        //public string Name => "Dominik";
-
-        //public string Surname => "Wisniewski";
-
-        //public void AddGrade(float grade)
-        //{
-        //    if (grade >= 0 && grade <= 100)
-        //    {
-        //        grades.Add(grade);
-        //    }
-        //    else
-        //    {
-        //        throw new Exception("Invalid grade value");
-        //    }
-        //}
-
         public void AddGrade(string gradeAsString)
         {
             switch (gradeAsString)
@@ -89,31 +73,5 @@
                     throw new Exception("Give the number from the range of 1 to 6.");
             }
         }
-
-        //public void AddGrade(int grade)
-        //{
-        //    float result = (float)grade;
-        //    this.AddGrade(result);
-        //}
-
-        //public void AddGrade(long grade)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public void AddGrade(double grade)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public void AddGrade(char grade)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Statiscics GetStatiscics()
-        //{
-        //    return new Statiscics();
-        //}
     }
 }
