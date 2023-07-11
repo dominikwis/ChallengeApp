@@ -18,7 +18,7 @@ namespace ChallengeApp
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(grade);
-                    Console.WriteLine($"Successfully added: {grade}");
+                    base.OnGradeAdded();
                 }
             }
             else
