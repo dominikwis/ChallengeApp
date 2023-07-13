@@ -6,7 +6,9 @@ namespace ChallengeApp
     {
         private const string fileName = "grades.txt";
 
-        public EmployeeInFile(string name, string surname) 
+        public override event GradeAddedDelegate GradeAdded;
+
+        public EmployeeInFile(string name, string surname)
             : base(name, surname)
         {
         }
@@ -18,14 +20,18 @@ namespace ChallengeApp
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(grade);
-                    base.OnGradeAdded();
+                    //base.OnGradeAdded();
+                }
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
                 }
             }
             else
             {
                 throw new Exception("Invalid grade value! Try again.");
             }
-            
+
         }
 
         public override void AddGrade(string grade)
@@ -159,10 +165,6 @@ namespace ChallengeApp
         {
             var statistic = new Statiscics();
 
-            statistic.Average = 0;
-            statistic.Max = float.MinValue;
-            statistic.Min = float.MaxValue;
-
             if (File.Exists(fileName))
             {
                 using (var reader = File.OpenText(fileName))
@@ -174,45 +176,15 @@ namespace ChallengeApp
                     {
                         var number = float.Parse(line);
 
-                        statistic.Min = Math.Min(statistic.Min, number);
-                        statistic.Max = Math.Max(statistic.Max, number);
-                        statistic.Average += number;
+                        statistic.AddGrade(number);
                         counter++;
-                        
+
                         line = reader.ReadLine();
                     }
-
-                    if (counter > 0)
-                    {
-                        statistic.Average /= counter;
-                    }
                 }
-            }
-
-            switch (statistic.Average)
-            {
-                case var average when average >= 80:
-                    statistic.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    statistic.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    statistic.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    statistic.AverageLetter = 'D';
-                    break;
-                default:
-                    statistic.AverageLetter = 'E';
-                    break;
             }
 
             return statistic;
         }
     }
 }
-
-//Zadanie domowe
-// - dokończyć implementacje tej klasy czyli walidacje, które ominęliśmy, żeby każda jedna ocena zapisywała się do pliku i żeby można było też ten plik odczytywać
-// w program.cs zapisał kilka wartości, zobaczył czy się wszystko zapisuje i działa bez interfacu

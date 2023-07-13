@@ -6,6 +6,8 @@ namespace ChallengeApp
     {
         private List<float> grades = new List<float>();
 
+        public override event GradeAddedDelegate GradeAdded;
+
         public EmployeeInMemory(string name, string surname)
             : base(name, surname)
         {
@@ -16,7 +18,11 @@ namespace ChallengeApp
             if (grade >= 0 && grade <= 100)
             {
                 grades.Add(grade);
-                base.OnGradeAdded();
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
+                /*base.OnGradeAdded();*/
             }
             else
             {
@@ -154,36 +160,9 @@ namespace ChallengeApp
         {
             var statistics = new Statiscics();
 
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
             foreach (var grade in this.grades)
             {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Average += grade;
-            }
-
-            statistics.Average /= this.grades.Count;
-
-            switch (statistics.Average)
-            {
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
+                statistics.AddGrade(grade);
             }
 
             return statistics;

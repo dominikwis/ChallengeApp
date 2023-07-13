@@ -1,6 +1,6 @@
 ﻿using ChallengeApp;
 
-var employee = new EmployeeInMemory("Dominik", "Wiśniewski");
+var employee = new EmployeeInFile("Dominik", "Wiśniewski");
 
 employee.GradeAdded += EmployeeGradeAdded;
 
@@ -60,6 +60,8 @@ var statistics = employee.GetStatiscics();
 
 Console.WriteLine($"Min.: {statistics.Min}");
 Console.WriteLine($"Max.: {statistics.Max}");
+Console.WriteLine($"Sum.: {statistics.Sum}");
+Console.WriteLine($"Count.: {statistics.Count}");
 Console.WriteLine($"AVG.: {statistics.Average}");
 Console.WriteLine($"Degree.: {statistics.AverageLetter}");
 

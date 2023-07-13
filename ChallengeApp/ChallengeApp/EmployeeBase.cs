@@ -7,20 +7,12 @@
 
         public delegate void GradeAddedDelegate(object sender, EventArgs args);
 
-        public event GradeAddedDelegate GradeAdded;
+        public abstract event GradeAddedDelegate GradeAdded;
 
         public EmployeeBase(string name, string surname)
         {
             this.Name = name;
             this.Surname = surname;
-        }
-
-        public virtual void OnGradeAdded()
-        {
-            if (GradeAdded != null)
-            {
-                GradeAdded(this, new EventArgs());
-            }
         }
 
         public abstract void AddGrade(float grade);
