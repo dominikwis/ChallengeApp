@@ -170,14 +170,12 @@ namespace ChallengeApp
                 using (var reader = File.OpenText(fileName))
                 {
                     var line = reader.ReadLine();
-                    int counter = 0;
 
                     while (line != null)
                     {
                         var number = float.Parse(line);
 
                         statistic.AddGrade(number);
-                        counter++;
 
                         line = reader.ReadLine();
                     }

@@ -4,7 +4,7 @@ var employee = new EmployeeInFile("Dominik", "Wiśniewski");
 
 employee.GradeAdded += EmployeeGradeAdded;
 
-Console.WriteLine("Witamy w programie Xyz do oceny pracowników");
+Console.WriteLine("Witamy w programie Xyz do oceny pracowników w opcji \"inFile\"");
 Console.WriteLine("============================================\n");
 
 while (true)
